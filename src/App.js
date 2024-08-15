@@ -11,6 +11,8 @@ import WatchLater from './components/WatchLater'
 import YouTubePlayer from './components/YoutubePlayer'
 import './app.scss'
 
+// There area some NPM packages outage that are showing warnings. Would be good to check if can be updated so the performance might be improved
+
 const App = () => {
 
   const state = useSelector((state) => state)
@@ -19,14 +21,10 @@ const App = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const searchQuery = searchParams.get('search')
   const [videoKey, setVideoKey] = useState()
-  const [isOpen, setOpen] = useState(false)
+  const [isOpen, setOpen] = useState(false) // Variable isOpen is declare but is not used.
   const navigate = useNavigate()
   
-  const closeModal = () => setOpen(false)
-  
-  const closeCard = () => {
-
-  }
+  const closeCard = () => {}
 
   const getSearchResults = (query) => {
     if (query !== '') {
@@ -76,6 +74,7 @@ const App = () => {
 
   return (
     <div className="App">
+      {/* Parsing parms but not all are used on the Header component. Remove unnecesary. */}
       <Header searchMovies={searchMovies} searchParams={searchParams} setSearchParams={setSearchParams} />
 
       <div className="container">
@@ -84,7 +83,7 @@ const App = () => {
             videoKey={videoKey}
           />
         ) : (
-          <div style={{padding: "30px"}}><h6>no trailer available. Try another movie</h6></div>
+          <div style={{padding: "30px"}}><h6>no trailer available. Try another movie</h6></div> // This line is always shown on the web page. Should be conditioned to show only if there are no trailers
         )}
 
         <Routes>
