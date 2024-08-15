@@ -74,6 +74,7 @@ const App = () => {
 
   return (
     <div className="App">
+      {/* Parsing parms but not all are used on the Header component. Remove unnecesary. */}
       <Header searchMovies={searchMovies} searchParams={searchParams} setSearchParams={setSearchParams} />
 
       <div className="container">
